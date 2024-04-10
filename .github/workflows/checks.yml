@@ -42,5 +42,6 @@ jobs:
 
       - name: Check Maven version
         run: mvn -v
-               - name: Check Maven version_2
-               run: ./mvnw -v
+
+      - name: Check Maven version_2
+        run: ./mvnw -v
