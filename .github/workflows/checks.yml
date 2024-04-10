@@ -32,13 +32,15 @@ jobs:
 
 
       - name: Build with Maven
-        run: mvn -B clean verify
+        run: ./mvnw -B clean verify
 
       - name: Run Selenium Tests
         run: |
-          mvn surefire:test
+          ./mvnw surefire:test
       - name: Check Java version
         run: java -version
 
       - name: Check Maven version
         run: mvn -v
+               - name: Check Maven version_2
+               run: ./mvnw -v
