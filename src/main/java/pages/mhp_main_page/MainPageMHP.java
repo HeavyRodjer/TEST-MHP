@@ -40,6 +40,8 @@ public final By main_panel = By.xpath("(//a[text()='Можливості'])[1]")
 
         return null;
     }
+
+    // test
 //    public final By text = By.xpath("//div[@class='jsx-813557553 interchange-slides__title']");
 //    public MainPageMHP check_text(){
 //        WebElement test = driver.findElement(text);
