@@ -19,6 +19,8 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
+          maven-version: '3.9.6'
+
       - name: Cache Maven dependencies
         uses: actions/cache@v3  # Оновлена версія дії actions/cache
         with:
