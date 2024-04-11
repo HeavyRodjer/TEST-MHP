@@ -1,6 +1,7 @@
 package pages.mhp_main_page;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,7 @@ public final By main_panel = By.xpath("(//a[text()='Можливості'])[1]")
     public MainPageMHP click(){
         WebElement test = driver.findElement(main_panel);
         String test3 = test.getAttribute("innerHTML");
-        Assert.assertEquals(test3,"Можливості");
+        Assertions.assertEquals(test3,"Можливості");
         test.click();
         return null;
     }
@@ -22,7 +23,7 @@ public final By main_panel = By.xpath("(//a[text()='Можливості'])[1]")
     public MainPageMHP click_list(){
         WebElement test = driver.findElement(check_text);
         String test3 = test.getAttribute("innerHTML");
-        Assert.assertEquals(test3,"Лабораторію сенсорного аналізу");
+        Assertions.assertEquals(test3,"Лабораторію сенсорного аналізу");
         test.click();
 
         return null;
@@ -32,11 +33,11 @@ public final By main_panel = By.xpath("(//a[text()='Можливості'])[1]")
     public MainPageMHP click_product(){
         WebElement test = driver.findElement(lab);
         String test3 = test.getAttribute("innerHTML");
-        Assert.assertEquals(test3,"Професійне програмне забезпечення");
+        Assertions.assertEquals(test3,"Професійне програмне забезпечення");
         test.click();
         WebElement test_lab_menu = driver.findElement(lab_menu);
         String test_lab = test_lab_menu.getAttribute("innerText");
-        Assert.assertEquals(test_lab,"ПРОФЕСІЙНЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ_TEST");
+        Assertions.assertEquals(test_lab,"ПРОФЕСІЙНЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ_TEST");
 
         return null;
     }
