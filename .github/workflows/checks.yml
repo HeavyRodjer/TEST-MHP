@@ -32,10 +32,10 @@ jobs:
 
       - name: Run Selenium Tests
         run: |
-          mvn surefire:test
+          "C:\\QA automation\\apache-maven-3.9.6\\bin\\mvn" surefire:test
 
       - name: Check Java version
         run: java -version
 
       - name: Check Maven version
-        run: mvn -v
+        run: "C:\\QA automation\\apache-maven-3.9.6\\bin\\mvn" -v
