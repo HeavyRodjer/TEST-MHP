@@ -41,6 +41,6 @@ jobs:
       - name: Generate Allure report
         run: |
           mvn allure:report
-          mvn allure:serve
+          mvn allure:serve --port 8080
 
       # Додаткові кроки для обробки результатів тестів, якщо потрібно
