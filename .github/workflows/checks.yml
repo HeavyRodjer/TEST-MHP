@@ -13,24 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Оновлена версія дії actions/checkout
+        uses: actions/checkout@v3
       - name: Set up JDK 11
-        uses: actions/setup-java@v2  # Оновлена версія дії actions/setup-java
+        uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
           maven-version: '3.9.6'
-
       - name: Cache Maven dependencies
-        uses: actions/cache@v3  # Оновлена версія дії actions/cache
+        uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-      # Додаткові кроки та дії
-
-
       - name: Build with Maven
         run: mvn -B clean verify
 
@@ -43,4 +39,3 @@ jobs:
 
       - name: Check Maven version
         run: mvn -v
-
