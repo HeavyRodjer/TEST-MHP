@@ -36,4 +36,11 @@ jobs:
         run: cp src/main/resources/msedgedriver.exe ./
 
       - name: Run Selenium Tests
-        run: mvn surefire:test
+        run: mvn -B surefire:test
+
+      - name: Generate Allure report
+        run: |
+          mvn allure:report
+          mvn allure:serve
+
+      # Додаткові кроки для обробки результатів тестів, якщо потрібно
