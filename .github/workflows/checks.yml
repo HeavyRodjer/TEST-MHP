@@ -37,6 +37,7 @@ jobs:
       - name: Run Selenium Tests
         run: |
           mvn surefire:test
+
       - name: Check Java version
         run: java -version
 
