@@ -30,6 +30,9 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean verify
 
+      - name: Copy msedgedriver.exe
+        run: cp src/main/resources/msedgedriver.exe .
+
       - name: Run Selenium Tests
         run: |
           mvn surefire:test

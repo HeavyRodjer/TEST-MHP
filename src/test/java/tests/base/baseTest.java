@@ -39,7 +39,7 @@ public class baseTest {
     static {
         LOGGER.info("START TIME:" + LocalTime.now());
         // Очиста самих алюрів
-        LOGGER.info("START CLEAR REPORTS dir: build/reports/test");
+        LOGGER.info("START CLEAR REPORTS dir: screenshots/reports/test");
         File allureResults = new File("allure-results");
         if (allureResults.isDirectory()){
             for (File item : Objects.requireNonNull(allureResults.listFiles()))
@@ -47,7 +47,7 @@ public class baseTest {
         }
         // Очиста Скрінів
         if (CLEAR_REPORTS_DIR){
-            File allureScreenshots = new File("build/reports/tests");
+            File allureScreenshots = new File("screenshots/reports/tests");
             for (File item : Objects.requireNonNull(allureScreenshots.listFiles()))
                 item.delete();
         }
