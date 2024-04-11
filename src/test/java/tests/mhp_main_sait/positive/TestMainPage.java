@@ -8,7 +8,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 import static constans.Constans.Urls.MHP_PAGE;
 public class TestMainPage extends baseTest {
     @Test
-    public void checkIsRedirectToAuth(){
+    public void checkIsSAIT(){
         //Метод для підставляння силки ITSM_MAIN_URL - сама силка, яка знаходиться в константах
         basePage.goToURL(MHP_PAGE);
         MainPageMHP.click();
