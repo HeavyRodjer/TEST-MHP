@@ -37,7 +37,7 @@ public final By main_panel = By.xpath("(//a[text()='Можливості'])[1]")
         test.click();
         WebElement test_lab_menu = driver.findElement(lab_menu);
         String test_lab = test_lab_menu.getAttribute("innerText");
-        Assertions.assertEquals(test_lab,"ПРОФЕСІЙНЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ_TEST");
+        Assertions.assertEquals(test_lab,"ПРОФЕСІЙНЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ_TES");
 
         return null;
     }
