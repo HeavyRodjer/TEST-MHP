@@ -52,7 +52,7 @@
         <version>2.10.0</version> <!-- Версію слід вказати актуальну -->
         <configuration>
 
-          <resultsDirectory>C:/Users/terpe/IdeaProjects/AQA Main Sait/allure-results</resultsDirectory>
+          <resultsDirectory>allure-results</resultsDirectory>
 
         </configuration>
 
