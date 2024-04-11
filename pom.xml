@@ -52,7 +52,7 @@
         <version>2.10.0</version> <!-- Версію слід вказати актуальну -->
         <configuration>
 
-          <resultsDirectory>allure-results</resultsDirectory>
+          <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
 
         </configuration>
 
