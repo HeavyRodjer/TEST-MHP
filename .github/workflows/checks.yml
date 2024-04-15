@@ -32,7 +32,7 @@ jobs:
         run: |
           wget https://msedgedriver.azureedge.net/LATEST_RELEASE
           export EDGE_VERSION=$(cat LATEST_RELEASE)
-          wget https://msedgedriver.azureedge.net/${EDGE_VERSION}/msedgedriver_linux64.zip
+          wget https://msedgedriver.azureedge.net/123.0.2420.97/edgedriver_linux64.zip
           unzip msedgedriver_linux64.zip
           sudo mv msedgedriver /usr/local/bin/msedgedriver
           sudo chmod +x /usr/local/bin/msedgedriver
