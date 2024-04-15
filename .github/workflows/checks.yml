@@ -1,46 +1,44 @@
-name: Selenium Tests
+name: Automated Tests
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  test:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
           java-version: '11'
 
-      - name: Cache Maven dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-maven-
-
-      - name: Build with Maven
-        run: mvn -B clean verify
-
-      - name: Copy msedgedriver.exe
-        run: cp src/main/resources/msedgedriver.exe ./
-
-      - name: Run Selenium Tests
-        run: mvn -B surefire:test
-
-      - name: Generate Allure report
+      - name: Set up ChromeDriver
         run: |
-          mvn allure:report
-          mvn allure:serve --port 8080
+          wget https://chromedriver.storage.googleapis.com/LATEST_RELEASE
+          export CHROME_VERSION=$(cat LATEST_RELEASE)
+          wget https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
 
-      # Додаткові кроки для обробки результатів тестів, якщо потрібно
+      - name: Set up EdgeDriver
+        run: |
+          wget https://msedgedriver.azureedge.net/LATEST_RELEASE
+          export EDGE_VERSION=$(cat LATEST_RELEASE)
+          wget https://msedgedriver.azureedge.net/${EDGE_VERSION}/msedgedriver_linux64.zip
+          unzip msedgedriver_linux64.zip
+          sudo mv msedgedriver /usr/local/bin/msedgedriver
+          sudo chmod +x /usr/local/bin/msedgedriver
+          
+          
+
+      - name: Run tests
+        run: mvn test
+        env:
+          PLATFORM_AND_BROWSER: 'EdgeDriver'  # or 'EdgeDriver'
