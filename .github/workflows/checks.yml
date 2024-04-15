@@ -21,23 +21,27 @@ jobs:
 
       - name: Set up ChromeDriver
         run: |
-          wget https://chromedriver.storage.googleapis.com/LATEST_RELEASE
+          wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE > LATEST_RELEASE
           export CHROME_VERSION=$(cat LATEST_RELEASE)
-          wget https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip
+          wget -q https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/chromedriver
-          sudo chmod +x /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver || (echo "Failed to install ChromeDriver" && exit 1)
 
       - name: Set up EdgeDriver
         run: |
-         wget https://msedgedriver.azureedge.net/123.0.2420.97/edgedriver_linux64.zip
-         unzip edgedriver_linux64.zip
-         sudo mv msedgedriver /usr/local/bin/msedgedriver
-         sudo chmod +x /usr/local/bin/msedgedriver
-          
-          
+          wget -q https://msedgedriver.azureedge.net/123.0.2420.97/edgedriver_linux64.zip
+          unzip -q edgedriver_linux64.zip
+          sudo mv msedgedriver /usr/local/bin/msedgedriver
+          sudo chmod +x /usr/local/bin/msedgedriver || (echo "Failed to install EdgeDriver" && exit 1)
 
       - name: Run tests
         run: mvn test
         env:
-          PLATFORM_AND_BROWSER: 'EdgeDriver'  # or 'EdgeDriver'
+          PLATFORM_AND_BROWSER: 'EdgeDriver'
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: target/surefire-reports/
